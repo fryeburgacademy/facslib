@@ -251,19 +251,21 @@ function FACSTurtle(width = 300, height = 180, speed = 100, gridSize = 30,debug 
             clearInterval(_this.looper);
             console.log("Done with steps.");
         }else{
-            // error check here?
-            try{
+            
             _this.nextStep();
-            } catch (error){
-                console.error(error);
-            }
+            
         }    
     }
     
     this.nextStep = function(){
         if(_this.stepCount < _this.steps.length){
             _this.log("Step: " + _this.stepCount);
-            _this.steps[_this.stepCount]();
+            try{
+                _this.steps[_this.stepCount]();
+            } catch (error){
+                console.error(error);
+                console.log("log: " + error);
+            }
             _this.stepCount++;
             _this.refreshTurtle();
             _this.pen.stroke();
