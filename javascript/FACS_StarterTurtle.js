@@ -251,7 +251,12 @@ function FACSTurtle(width = 300, height = 180, speed = 100, gridSize = 30,debug 
             clearInterval(_this.looper);
             console.log("Done with steps.");
         }else{
+            // error check here?
+            try{
             _this.nextStep();
+            } catch (error){
+                console.error(error);
+            }
         }    
     }
     
